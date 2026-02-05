@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Kampanye Langkah Kecil Generasi Muda - Bersama kurangi limbah plastik untuk Bumi yang lebih sehat">
+    <title>Langkah Kecil Generasi Muda | Kampanye Anti Plastik</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>LangkahKecil<strong>BumiSehat</strong></span>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#masalah" class="nav-link">Masalah</a></li>
+                    <li><a href="#solusi" class="nav-link">Solusi</a></li>
+                    <li><a href="#challenge" class="nav-link">Challenge</a></li>
+                    <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                    <li><a href="#bergabung" class="nav-link">Bergabung</a></li>
+                </ul>
+
+                <button class="btn-cta" onclick="window.location.href='#challenge'">
+                    <i class="fas fa-rocket"></i> Ambil Aksi
+                </button>
+            </div>
+
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+
+        <div class="container hero-content" data-aos="fade-up">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="highlight">Generasi Kita,</span><br>
+                    Aksi Kita,<br>
+                    <span class="gradient-text">Masa Depan Kita</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Langkah Kecil Generasi Muda Hari Ini untuk Bumi yang Lebih Sehat di Masa Depan
+                </p>
+
+                <p class="hero-description">
+                    Setiap tahun, <strong>100 juta ton plastik</strong> mencemari lautan kita.
+                    Saatnya <strong>kita</strong>, generasi muda, mengambil tindakan nyata!
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='#challenge'">
+                        <i class="fas fa-trophy"></i> Mulai Challenge 30 Hari
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.location.href='#calculator'">
+                        <i class="fas fa-calculator"></i> Hitung Jejak Plastikmu
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80"
+                    alt="Youth Environmental Action">
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics" id="statistik">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Krisis Plastik dalam Angka</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-unit">juta ton</div>
+                    <p class="stat-label">Plastik masuk lautan setiap tahun</p>
+                </div>
+
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-unit">triliun</div>
+                    <p class="stat-label">Kantong plastik digunakan per tahun</p>
+                </div>
+
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <i class="fas fa-bottle-water"></i>
+                    </div>
+                    <div class="stat-number" data-target="1">0</div>
+                    <div class="stat-unit">juta</div>
+                    <p class="stat-label">Botol plastik dibeli setiap menit</p>
+                </div>
+
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number" data-target="450">0</div>
+                    <div class="stat-unit">tahun</div>
+                    <p class="stat-label">Waktu yang dibutuhkan 1 botol plastik untuk terurai</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="masalah">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Mengapa Kita Harus Peduli?</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Dampak plastik lebih berbahaya dari yang kita bayangkan
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Ekosistem Laut Terancam</h3>
+                        <p>Lebih dari 800 spesies laut terancam punah akibat plastik. Setiap tahun, 1 juta burung laut
+                            dan 100 ribu mamalia laut mati karena plastik.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                    <div class="timeline-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Mikroplastik di Makanan Kita</h3>
+                        <p>Mikroplastik ditemukan di 90% garam meja, air minum, dan bahkan di udara yang kita hirup.
+                            Kita mengonsumsi setara 1 kartu kredit plastik setiap minggu!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Dampak pada Kesehatan</h3>
+                        <p>Zat kimia dalam plastik (BPA, phthalates) mengganggu hormon, meningkatkan risiko kanker, dan
+                            mempengaruhi perkembangan anak.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                    <div class="timeline-icon">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Perubahan Iklim</h3>
+                        <p>Produksi plastik menghasilkan 850 juta ton CO2 per tahun. Jika tidak dihentikan, emisi
+                            plastik bisa mencapai 15% dari budget karbon global pada 2050.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="500">
+                    <div class="timeline-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Ketidakadilan Lingkungan</h3>
+                        <p>Komunitas miskin dan negara berkembang menanggung beban terbesar dari polusi plastik, padahal
+                            mereka kontributor terkecil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solusi">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">5 Langkah Sederhana, Dampak Luar Biasa</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Mulai dari diri sendiri, sekarang juga!
+            </p>
+
+            <div class="solution-grid">
+                <div class="solution-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <h3>Tas Belanja Reusable</h3>
+                            <p class="flip-hint">Klik untuk info lengkap</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Tas Belanja Reusable</h3>
+                            <p>Ganti kantong plastik dengan tas kain/non-woven yang bisa dipakai berulang kali.</p>
+                            <div class="impact">
+                                <i class="fas fa-leaf"></i>
+                                <strong>Dampak:</strong> Hemat 200+ kantong plastik/tahun
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-bottle-water"></i>
+                            </div>
+                            <h3>Botol Minum Sendiri</h3>
+                            <p class="flip-hint">Klik untuk info lengkap</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Botol Minum Sendiri</h3>
+                            <p>Bawa tumbler atau botol minum reusable kemana pun kamu pergi.</p>
+                            <div class="impact">
+                                <i class="fas fa-leaf"></i>
+                                <strong>Dampak:</strong> Kurangi 156 botol plastik/tahun
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <h3>Tolak Sedotan Plastik</h3>
+                            <p class="flip-hint">Klik untuk info lengkap</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Tolak Sedotan Plastik</h3>
+                            <p>Katakan "tidak" untuk sedotan dan alat makan plastik sekali pakai. Bawa sendiri jika
+                                perlu.</p>
+                            <div class="impact">
+                                <i class="fas fa-leaf"></i>
+                                <strong>Dampak:</strong> Selamatkan kehidupan laut
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <h3>Kemasan Minimal</h3>
+                            <p class="flip-hint">Klik untuk info lengkap</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Kemasan Minimal</h3>
+                            <p>Pilih produk dengan kemasan minimal atau ramah lingkungan. Beli curah jika memungkinkan.
+                            </p>
+                            <div class="impact">
+                                <i class="fas fa-leaf"></i>
+                                <strong>Dampak:</strong> Kurangi 50% sampah kemasan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-card" data-aos="flip-left" data-aos-delay="500">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Bersih-Bersih Lingkungan</h3>
+                            <p class="flip-hint">Klik untuk info lengkap</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Bersih-Bersih Lingkungan</h3>
+                            <p>Ikut gerakan bersih-bersih pantai, sungai, atau lingkungan sekitar minimal 1x sebulan.
+                            </p>
+                            <div class="impact">
+                                <i class="fas fa-leaf"></i>
+                                <strong>Dampak:</strong> Komunitas lebih bersih & sehat
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alternatives-cta" data-aos="fade-up" data-aos-delay="600">
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i> Download Panduan Alternatif Produk
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Hitung Jejak Plastik Kamu</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Berapa banyak plastik yang kamu gunakan dalam setahun?
+            </p>
+
+            <div class="calculator-container" data-aos="zoom-in" data-aos-delay="200">
+                <div class="calculator-form">
+                    <div class="input-group">
+                        <label for="bottles">
+                            <i class="fas fa-bottle-water"></i> Botol plastik per minggu
+                        </label>
+                        <input type="range" id="bottles" min="0" max="20" value="5" class="slider">
+                        <span class="value" id="bottlesValue">5</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bags">
+                            <i class="fas fa-shopping-bag"></i> Kantong plastik per minggu
+                        </label>
+                        <input type="range" id="bags" min="0" max="30" value="10" class="slider">
+                        <span class="value" id="bagsValue">10</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="packaging">
+                            <i class="fas fa-box"></i> Kemasan makanan per minggu
+                        </label>
+                        <input type="range" id="packaging" min="0" max="20" value="7" class="slider">
+                        <span class="value" id="packagingValue">7</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="straws">
+                            <i class="fas fa-glass-whiskey"></i> Sedotan plastik per minggu
+                        </label>
+                        <input type="range" id="straws" min="0" max="15" value="5" class="slider">
+                        <span class="value" id="strawsValue">5</span>
+                    </div>
+
+                    <button class="btn btn-primary calculate-btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Hitung Sekarang
+                    </button>
+                </div>
+
+                <div class="calculator-result" id="calculatorResult" style="display: none;">
+                    <div class="result-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Hasil Analisis Jejak Plastikmu</h3>
+                    </div>
+
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-value" id="totalKg">0</div>
+                            <div class="result-label">kg plastik/tahun</div>
+                        </div>
+
+                        <div class="result-stat">
+                            <div class="result-value" id="totalBottles">0</div>
+                            <div class="result-label">botol plastik setara</div>
+                        </div>
+
+                        <div class="result-stat">
+                            <div class="result-value" id="treesNeeded">0</div>
+                            <div class="result-label">pohon untuk netralkan</div>
+                        </div>
+                    </div>
+
+                    <div class="result-comparison">
+                        <p class="comparison-label">Perbandingan dengan rata-rata global:</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-labels">
+                            <span>0 kg</span>
+                            <span id="globalAvg">84 kg (rata-rata)</span>
+                        </div>
+                    </div>
+
+                    <div class="result-message" id="resultMessage">
+                        <!-- Dynamic message based on score -->
+                    </div>
+
+                    <button class="btn btn-secondary" onclick="window.location.href='#challenge'">
+                        <i class="fas fa-trophy"></i> Mulai Challenge untuk Kurangi Jejak Plastik!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section continues in next part due to length... -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
