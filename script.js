@@ -452,3 +452,7 @@ console.log('%c💚 Setiap langkah kecil membuat perbedaan besar.',
     'color: #3b82f6; font-size: 16px;');
 console.log('%cBergabunglah dengan gerakan kami: #LangkahKecilBumiSehat',
     'color: #fbbf24; font-size: 14px; font-style: italic;');
+
+
+
+//contoh saja (ada kode baru )
