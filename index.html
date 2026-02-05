@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Kampanye Langkah Kecil Generasi Muda - Bersama kurangi limbah plastik untuk Bumi yang lebih sehat">
-    <title>Langkah Kecil Generasi Muda | Kampanye Anti Plastik</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+    content="Bergabunglah dengan gerakan Langkah Kecil Generasi Muda! 30 hari challenge tanpa plastik untuk Bumi yang lebih sehat. Hitung jejak plastikmu sekarang!">
+<meta name="keywords" content="lingkungan, plastik, daur ulang, kampanye, bumi sehat, global warming, eco friendly">
+<meta name="author" content="Tim Langkah Kecil">
+<meta name="theme-color" content="#10b981">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://langkahkecil.id/">
+<meta property="og:title" content="Langkah Kecil Generasi Muda | Kampanye Anti Plastik">
+<meta property="og:description"
+    content="Bergabunglah dengan gerakan Langkah Kecil Generasi Muda! 30 hari challenge tanpa plastik.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Langkah Kecil Generasi Muda | Kampanye Anti Plastik">
+<meta property="twitter:description" content="Aksi nyata generasi muda untuk mengurangi sampah plastik. Yuk gabung!">
+<meta property="twitter:image" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
 
-    <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3209/3209995.png">
 
-    <link rel="stylesheet" href="style.css">
+<title>Langkah Kecil Generasi Muda | Kampanye Anti Plastik</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS (Animate On Scroll) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Chart.js for Calculator -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="additional-styles.css">
 </head>
 
 <body>
@@ -35,7 +60,7 @@
         <nav class="nav container">
             <div class="nav-logo">
                 <i class="fas fa-leaf"></i>
-                <span>LangkahKecil-Kecil<strong>BumiSehat</strong></span>
+                <span>LangkahKecil<strong>BumiSehat</strong></span>
             </div>
 
             <div class="nav-menu" id="navMenu">
@@ -408,6 +433,12 @@
                         </div>
                     </div>
 
+                    <!-- Chart Container -->
+                    <div class="chart-container"
+                        style="position: relative; height:300px; width:100%; margin-bottom: 2rem;">
+                        <canvas id="plasticChart"></canvas>
+                    </div>
+
                     <div class="result-comparison">
                         <p class="comparison-label">Perbandingan dengan rata-rata global:</p>
                         <div class="progress-bar">
@@ -431,7 +462,456 @@
         </div>
     </section>
 
-    <!-- Challenge Section continues in next part due to length... -->
+    <!-- 30-Day Challenge Section -->
+    <section class="challenge" id="challenge">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">🏆 Challenge 30 Hari Tanpa Plastik</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Buktikan bahwa kamu bisa membuat perubahan! Join ribuan anak muda yang sudah berhasil.
+            </p>
+
+            <div class="challenge-intro" data-aos="zoom-in" data-aos-delay="200">
+                <div class="challenge-stats-banner">
+                    <div class="banner-stat">
+                        <div class="banner-number" id="participantsCount">12,847</div>
+                        <div class="banner-label">Peserta Aktif</div>
+                    </div>
+                    <div class="banner-stat">
+                        <div class="banner-number" id="plasticSaved">3.2 TON</div>
+                        <div class="banner-label">Plastik Terselamatkan</div>
+                    </div>
+                    <div class="banner-stat">
+                        <div class="banner-number">84%</div>
+                        <div class="banner-label">Tingkat Keberhasilan</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-grid">
+                <!-- Week 1 -->
+                <div class="challenge-week" data-aos="fade-right" data-aos-delay="100">
+                    <div class="week-header">
+                        <div class="week-badge">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Minggu 1: Mulai Langkahmu</h3>
+                    </div>
+                    <ul class="challenge-tasks">
+                        <li><i class="fas fa-check-circle"></i> Bawa tas belanja reusable setiap hari</li>
+                        <li><i class="fas fa-check-circle"></i> Tolak kantong plastik di kasir</li>
+                        <li><i class="fas fa-check-circle"></i> Gunakan botol minum pribadi</li>
+                        <li><i class="fas fa-check-circle"></i> Dokumentasi perjalananmu di sosmed</li>
+                    </ul>
+                    <div class="week-reward">
+                        <i class="fas fa-medal"></i> Badge: "Eco Starter"
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="challenge-week" data-aos="fade-right" data-aos-delay="200">
+                    <div class="week-header">
+                        <div class="week-badge">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Minggu 2: Tingkatkan Aksimu</h3>
+                    </div>
+                    <ul class="challenge-tasks">
+                        <li><i class="fas fa-check-circle"></i> Bawa tempat makan & alat makan sendiri</li>
+                        <li><i class="fas fa-check-circle"></i> Tolak sedotan plastik</li>
+                        <li><i class="fas fa-check-circle"></i> Beli produk tanpa kemasan plastik</li>
+                        <li><i class="fas fa-check-circle"></i> Ajak 3 teman ikut challenge</li>
+                    </ul>
+                    <div class="week-reward">
+                        <i class="fas fa-medal"></i> Badge: "Eco Warrior"
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="challenge-week" data-aos="fade-right" data-aos-delay="300">
+                    <div class="week-header">
+                        <div class="week-badge">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Minggu 3: Jadi Inspirasi</h3>
+                    </div>
+                    <ul class="challenge-tasks">
+                        <li><i class="fas fa-check-circle"></i> Ikut gerakan bersih-bersih lingkungan</li>
+                        <li><i class="fas fa-check-circle"></i> Share tips anti-plastikmu</li>
+                        <li><i class="fas fa-check-circle"></i> Buat konten edukatif di sosmed</li>
+                        <li><i class="fas fa-check-circle"></i> Edukasi keluarga & tetangga</li>
+                    </ul>
+                    <div class="week-reward">
+                        <i class="fas fa-medal"></i> Badge: "Eco Leader"
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="challenge-week" data-aos="fade-right" data-aos-delay="400">
+                    <div class="week-header">
+                        <div class="week-badge">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Minggu 4: Jadikan Gaya Hidup</h3>
+                    </div>
+                    <ul class="challenge-tasks">
+                        <li><i class="fas fa-check-circle"></i> Zero plastic shopping selama seminggu</li>
+                        <li><i class="fas fa-check-circle"></i> Buat produk reusable sendiri (DIY)</li>
+                        <li><i class="fas fa-check-circle"></i> Bantu UKM lokal pakai kemasan ramah lingkungan</li>
+                        <li><i class="fas fa-check-circle"></i> Commit untuk terus tanpa plastik!</li>
+                    </ul>
+                    <div class="week-reward">
+                        <i class="fas fa-trophy"></i> Badge: "Eco Champion"
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-cta" data-aos="zoom-in" data-aos-delay="500">
+                <button class="btn btn-primary btn-large" onclick="window.location.href='#bergabung'">
+                    <i class="fas fa-rocket"></i> Daftar Challenge Sekarang!
+                </button>
+                <p class="challenge-note">Gratis! Dapat e-certificate untuk yang menyelesaikan 🎓</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeri">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">📸 Galeri Aksi Generasi Muda</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Mereka sudah membuktikan! Lihat transformasi luar biasa dari peserta challenge kami.
+            </p>
+
+            <!-- Impact Stories -->
+            <div class="impact-stories">
+                <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?w=600&q=80"
+                            alt="Beach Cleanup">
+                        <div class="story-badge">
+                            <i class="fas fa-award"></i> Jakarta
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>"150kg plastik dikumpulkan dalam 3 jam!"</h3>
+                        <p><strong>Sarah & Tim EcoJakarta</strong> mengorganisir beach cleanup di Ancol. Melibatkan 200+
+                            mahasiswa dan berhasil mengumpulkan 150kg sampah plastik!</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-users"></i> 200+ Peserta</span>
+                            <span><i class="fas fa-calendar-alt"></i> Jan 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80"
+                            alt="Zero Waste Shopping">
+                        <div class="story-badge">
+                            <i class="fas fa-award"></i> Bandung
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>"30 hari tanpa plastik? DONE!"</h3>
+                        <p><strong>Rina, 22 tahun</strong> berhasil menyelesaikan challenge 30 hari. Sekarang dia
+                            menginspirasi 50+ orang di kampusnya untuk juga zero waste!</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-shopping-bag"></i> 0 Plastik</span>
+                            <span><i class="fas fa-heart"></i> 50+ Terinspirasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80"
+                            alt="Community Education">
+                        <div class="story-badge">
+                            <i class="fas fa-award"></i> Surabaya
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>"Dari siswa jadi eco-preneur!"</h3>
+                        <p><strong>Budi & Komunitas EcoSby</strong> membuat produk totebag dari bahan daur ulang. Kini
+                            sudah menjual 500+ tas dan mengedukasi ribuan orang!</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-shopping-bag"></i> 500+ Produk</span>
+                            <span><i class="fas fa-leaf"></i> 100% Recycle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Gallery Grid -->
+            <div class="photo-gallery-grid" data-aos="fade-up" data-aos-delay="400">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1622866407355-5eb2bd5f3e43?w=400&q=80" alt="Gallery 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=400&q=80" alt="Gallery 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&q=80" alt="Gallery 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=400&q=80" alt="Gallery 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=80" alt="Gallery 5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=400&q=80" alt="Gallery 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-cta" data-aos="fade-up" data-aos-delay="500">
+                <p class="upload-invitation">Punya foto aksi anti-plastikmu? Upload dan inspire yang lain! 📸</p>
+                <button class="btn btn-outline">
+                    <i class="fas fa-upload"></i> Upload Foto Aksimu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join/Bergabung Section -->
+    <section class="join" id="bergabung">
+        <div class="join-bg">
+            <div class="join-wave wave1"></div>
+            <div class="join-wave wave2"></div>
+        </div>
+
+        <div class="container">
+            <div class="join-content">
+                <div class="join-text" data-aos="fade-right">
+                    <h2 class="section-title">🌍 Bergabung dengan Gerakan Kami!</h2>
+                    <p class="join-description">
+                        Jadilah bagian dari <strong>12,000+ generasi muda</strong> yang sudah mengambil aksi nyata untuk
+                        Bumi yang lebih sehat. Bersama kita lebih kuat!
+                    </p>
+
+                    <div class="join-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>E-Certificate</strong>
+                                <p>Untuk yang menyelesaikan 30-day challenge</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Community Support</strong>
+                                <p>WhatsApp group dengan eco-warriors lainnya</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Weekly Tips</strong>
+                                <p>Tips praktis & inspirasi via email</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Exclusive Events</strong>
+                                <p>Akses ke workshop & cleanup events</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-proof">
+                        <div class="avatars-group">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="User 1">
+                            <img src="https://i.pravatar.cc/150?img=2" alt="User 2">
+                            <img src="https://i.pravatar.cc/150?img=3" alt="User 3">
+                            <img src="https://i.pravatar.cc/150?img=4" alt="User 4">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="User 5">
+                        </div>
+                        <p><strong>12,847 eco-warriors</strong> sudah bergabung minggu ini!</p>
+                    </div>
+                </div>
+
+                <div class="join-form-container" data-aos="fade-left">
+                    <form class="join-form" id="joinForm">
+                        <h3>Daftar Sekarang - 100% Gratis!</h3>
+
+                        <div class="form-group">
+                            <label for="nama">
+                                <i class="fas fa-user"></i> Nama Lengkap
+                            </label>
+                            <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkapmu" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> WhatsApp
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kota">
+                                <i class="fas fa-map-marker-alt"></i> Kota
+                            </label>
+                            <select id="kota" name="kota" required>
+                                <option value="">Pilih kotamu</option>
+                                <option value="Jakarta">Jakarta</option>
+                                <option value="Bandung">Bandung</option>
+                                <option value="Surabaya">Surabaya</option>
+                                <option value="Yogyakarta">Yogyakarta</option>
+                                <option value="Semarang">Semarang</option>
+                                <option value="Medan">Medan</option>
+                                <option value="Makassar">Makassar</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motivasi">
+                                <i class="fas fa-heart"></i> Kenapa kamu ingin bergabung?
+                            </label>
+                            <textarea id="motivasi" name="motivasi" rows="3" placeholder="Ceritakan motivasimu..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agree" name="agree" required>
+                                <span>Saya siap untuk mengambil aksi nyata dan menginspirasi orang lain!</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large btn-submit">
+                            <i class="fas fa-paper-plane"></i> Daftar Sekarang!
+                        </button>
+
+                        <p class="form-note">
+                            <i class="fas fa-lock"></i> Data kamu aman. Kami tidak akan spam.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>LangkahKecil<strong>BumiSehat</strong></span>
+                    </div>
+                    <p class="footer-tagline">
+                        Langkah Kecil Generasi Muda Hari Ini<br>untuk Bumi yang Lebih Sehat di Masa Depan
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#masalah">Masalah</a></li>
+                        <li><a href="#solusi">Solusi</a></li>
+                        <li><a href="#challenge">Challenge</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#calculator">Plastic Calculator</a></li>
+                        <li><a href="#">Panduan Zero Waste</a></li>
+                        <li><a href="#">Tips & Trik</a></li>
+                        <li><a href="#">Download E-Book</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Dapatkan tips mingguan langsung di emailmu!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email kamu..." required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="footer-stats">
+                        <div class="footer-stat-item">
+                            <strong>12,847</strong>
+                            <span>Subscribers</span>
+                        </div>
+                        <div class="footer-stat-item">
+                            <strong>3.2 Ton</strong>
+                            <span>Plastik Diselamatkan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>Langkah Kecil Bumi Sehat</strong>. Dibuat dengan 💚 untuk Bumi kita.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#">Terms of Service</a>
+                    <span>•</span>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>

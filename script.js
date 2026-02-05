@@ -231,11 +231,16 @@ function calculatePlasticFootprint() {
     const packagingWeight = 10; // grams per packaging
     const strawWeight = 1; // grams per straw
 
+    // Weekly usage in grams per category for Chart
+    const weeklyData = {
+        bottles: bottles * bottleWeight,
+        bags: bags * bagWeight,
+        packaging: packaging * packagingWeight,
+        straws: straws * strawWeight
+    };
+
     // Weekly usage in grams
-    const weeklyPlastic = (bottles * bottleWeight) +
-        (bags * bagWeight) +
-        (packaging * packagingWeight) +
-        (straws * strawWeight);
+    const weeklyPlastic = weeklyData.bottles + weeklyData.bags + weeklyData.packaging + weeklyData.straws;
 
     // Annual calculation
     const yearlyPlastic = weeklyPlastic * 52;
@@ -249,11 +254,13 @@ function calculatePlasticFootprint() {
     const globalAverage = 84;
     const percentage = Math.min(100, (totalKg / globalAverage) * 100);
 
-    // Display results
-    displayResults(totalKg, totalBottles, treesNeeded, percentage);
+    // Display results with Chart Data
+    displayResults(totalKg, totalBottles, treesNeeded, percentage, weeklyData);
 }
 
-function displayResults(totalKg, totalBottles, treesNeeded, percentage) {
+let plasticChart = null; // Store chart instance
+
+function displayResults(totalKg, totalBottles, treesNeeded, percentage, weeklyData) {
     const resultDiv = document.getElementById('calculatorResult');
     const formDiv = document.querySelector('.calculator-form');
 
@@ -267,6 +274,55 @@ function displayResults(totalKg, totalBottles, treesNeeded, percentage) {
     setTimeout(() => {
         progressFill.style.width = percentage + '%';
     }, 100);
+
+    // RENDER CHART
+    const ctx = document.getElementById('plasticChart').getContext('2d');
+
+    // Destroy existing chart if any
+    if (plasticChart) {
+        plasticChart.destroy();
+    }
+
+    plasticChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Botol', 'Kantong', 'Kemasan', 'Sedotan'],
+            datasets: [{
+                data: [weeklyData.bottles, weeklyData.bags, weeklyData.packaging, weeklyData.straws],
+                backgroundColor: ['#3b82f6', '#10b981', '#fbbf24', '#ef4444'],
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            family: "'Inter', sans-serif",
+                            size: 14
+                        },
+                        usePointStyle: true
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Komposisi Sampah Plastik Mingguan',
+                    font: {
+                        size: 16,
+                        family: "'Poppins', sans-serif",
+                        weight: '600'
+                    },
+                    padding: {
+                        bottom: 20
+                    }
+                }
+            }
+        }
+    });
 
     // Determine message based on score
     const messageDiv = document.getElementById('resultMessage');
@@ -453,6 +509,338 @@ console.log('%c💚 Setiap langkah kecil membuat perbedaan besar.',
 console.log('%cBergabunglah dengan gerakan kami: #LangkahKecilBumiSehat',
     'color: #fbbf24; font-size: 14px; font-style: italic;');
 
+// ========== BACK TO TOP BUTTON ==========
+const backToTopBtn = document.getElementById('backToTop');
 
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
 
-//contoh saja (ada kode baru )
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// ========== JOIN FORM HANDLING ==========
+const joinForm = document.getElementById('joinForm');
+
+if (joinForm) {
+    joinForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+            nama: document.getElementById('nama').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            kota: document.getElementById('kota').value,
+            motivasi: document.getElementById('motivasi').value,
+            agree: document.getElementById('agree').checked
+        };
+
+        // Simulate form submission with animation
+        const submitBtn = this.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mendaftar...';
+        submitBtn.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+            // Success!
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Berhasil Terdaftar!';
+            submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #10b981 100%)';
+
+            // Show success message
+            alert(`🎉 Selamat ${formData.nama}!\n\nKamu berhasil terdaftar untuk challenge 30 hari!\n\nCek email kamu untuk informasi selanjutnya.\n\n#LangkahKecilBumiSehat 💚`);
+
+            // Reset form
+            setTimeout(() => {
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+            }, 3000);
+
+            // Log for demo
+            console.log('📝 Form submitted:', formData);
+        }, 2000);
+    });
+}
+
+// ========== GALLERY LIGHTBOX EFFECT ==========
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', function () {
+        const img = this.querySelector('img');
+        const imgSrc = img.src;
+
+        // Create lightbox (simple version)
+        const lightbox = document.createElement('div');
+        lightbox.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            cursor: pointer;
+            animation: fadeIn 0.3s ease;
+        `;
+
+        const lightboxImg = document.createElement('img');
+        lightboxImg.src = imgSrc;
+        lightboxImg.style.cssText = `
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.4s ease;
+        `;
+
+        lightbox.appendChild(lightboxImg);
+        document.body.appendChild(lightbox);
+
+        // Close on click
+        lightbox.addEventListener('click', () => {
+            lightbox.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                document.body.removeChild(lightbox);
+            }, 300);
+        });
+    });
+});
+
+// ========== DYNAMIC NUMBER COUNTER FOR CHALLENGE STATS ==========
+function animateCounter(element, target, duration = 2000) {
+    let current = 0;
+    const increment = target / (duration / 16);
+    const isDecimal = target.toString().includes('.');
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = isDecimal ? target.toFixed(1) : target;
+            clearInterval(timer);
+        } else {
+            element.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+        }
+    }, 16);
+}
+
+// Animate challenge stats when scrolled into view
+const challengeSection = document.querySelector('.challenge');
+if (challengeSection) {
+    let challengeAnimated = false;
+
+    const observerChallenge = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !challengeAnimated) {
+                challengeAnimated = true;
+
+                // Animate numbers
+                const participantsEl = document.getElementById('participantsCount');
+                if (participantsEl) {
+                    let count = 0;
+                    const target = 12847;
+                    const timer = setInterval(() => {
+                        count += 200;
+                        if (count >= target) {
+                            participantsEl.textContent = target.toLocaleString();
+                            clearInterval(timer);
+                        } else {
+                            participantsEl.textContent = count.toLocaleString();
+                        }
+                    }, 20);
+                }
+
+                const plasticEl = document.getElementById('plasticSaved');
+                if (plasticEl) {
+                    let count = 0;
+                    const timer = setInterval(() => {
+                        count += 0.1;
+                        if (count >= 3.2) {
+                            plasticEl.textContent = '3.2 TON';
+                            clearInterval(timer);
+                        } else {
+                            plasticEl.textContent = count.toFixed(1) + ' TON';
+                        }
+                    }, 30);
+                }
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observerChallenge.observe(challengeSection);
+}
+
+// ========== NEWSLETTER FORM ==========
+const newsletterForm = document.querySelector('.newsletter-form');
+
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+
+        const btn = this.querySelector('button');
+        const originalHTML = btn.innerHTML;
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            alert(`✅ Terima kasih! Email ${email} sudah terdaftar untuk newsletter.\n\nCek inbox kamu untuk konfirmasi.`);
+
+            setTimeout(() => {
+                this.reset();
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }, 2000);
+        }, 1500);
+    });
+}
+
+// ========== ENHANCED SCROLL REVEAL FOR CHALLENGE WEEKS ==========
+const challengeWeeks = document.querySelectorAll('.challenge-week');
+
+challengeWeeks.forEach((week, index) => {
+    week.style.setProperty('--delay', `${index * 100}ms`);
+});
+
+// ========== TOUCH FEEDBACK FOR MOBILE ==========
+document.querySelectorAll('.btn, .social-link, .gallery-item').forEach(element => {
+    element.addEventListener('touchstart', function () {
+        this.style.transform = 'scale(0.95)';
+    });
+
+    element.addEventListener('touchend', function () {
+        this.style.transform = '';
+    });
+});
+
+// ========== LAZY LOADING IMAGES ==========
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src || img.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ========== FORM VALIDATION ENHANCEMENT ==========
+const formInputs = document.querySelectorAll('input, textarea, select');
+
+formInputs.forEach(input => {
+    input.addEventListener('blur', function () {
+        if (this.value.trim() && this.checkValidity()) {
+            this.style.borderColor = '#22c55e';
+        } else if (!this.checkValidity() && this.value.trim()) {
+            this.style.borderColor = '#ef4444';
+        }
+    });
+
+    input.addEventListener('input', function () {
+        if (this.style.borderColor === '#ef4444' || this.style.borderColor === '#22c55e') {
+            this.style.borderColor = '';
+        }
+    });
+});
+
+// ========== ACCESSIBILITY KEYBOARD NAVIGATION ==========
+document.addEventListener('keydown', (e) => {
+    // ESC key closes lightbox
+    if (e.key === 'Escape') {
+        const lightbox = document.querySelector('[style*="z-index: 10000"]');
+        if (lightbox) {
+            lightbox.click();
+        }
+
+        // Close mobile menu
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu && navMenu.classList.contains('active')) {
+            document.getElementById('navToggle').click();
+        }
+    }
+
+    // Ctrl/Cmd + K to focus search (if you add search later)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        // Focus first form input
+        const firstInput = document.querySelector('input[type="email"]');
+        if (firstInput) firstInput.focus();
+    }
+});
+
+// ========== SMOOTH PERFORMANCE MONITORING ==========
+window.addEventListener('load', () => {
+    if (window.performance) {
+        const perfData = window.performance.timing;
+        const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+
+        if (loadTime > 0) {
+            console.log(`⚡ Page loaded in ${(loadTime / 1000).toFixed(2)} seconds`);
+
+            // Log performance metrics
+            console.log('%cPerformance Metrics:', 'color: #3b82f6; font-weight: bold;');
+            console.log(`DNS Lookup: ${(perfData.domainLookupEnd - perfData.domainLookupStart)}ms`);
+            console.log(`Server Response: ${(perfData.responseEnd - perfData.requestStart)}ms`);
+            console.log(`DOM Processing: ${(perfData.domComplete - perfData.domLoading)}ms`);
+        }
+    }
+});
+
+// ========== ENGAGEMENT TRACKING (FOR ANALYTICS) ==========
+let engagementMetrics = {
+    scrollDepth: 0,
+    timeOnPage: 0,
+    interactionsCount: 0
+};
+
+// Track scroll depth
+window.addEventListener('scroll', throttle(() => {
+    const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    engagementMetrics.scrollDepth = Math.max(engagementMetrics.scrollDepth, scrollPercent);
+}, 1000));
+
+// Track time on page
+setInterval(() => {
+    engagementMetrics.timeOnPage += 1;
+}, 1000);
+
+// Track interactions
+document.addEventListener('click', (e) => {
+    if (e.target.matches('button, a, .card, .gallery-item')) {
+        engagementMetrics.interactionsCount++;
+    }
+});
+
+// Log engagement when leaving (for demo purposes)
+window.addEventListener('beforeunload', () => {
+    console.log('%cUser Engagement Metrics:', 'color: #fbbf24; font-weight: bold;');
+    console.log(engagementMetrics);
+});
+
+console.log('✅ All enhanced features initialized successfully!');
