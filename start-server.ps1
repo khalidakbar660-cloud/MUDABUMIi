@@ -2,7 +2,7 @@
 # Jalankan script ini untuk membuka website di browser
 
 $port = 8000
-$path = $PSScriptRoot
+$path = "C:\Users\PC\Documents\e-kampaye"
 
 Write-Host "🚀 Starting local server..." -ForegroundColor Green
 Write-Host "📁 Serving files from: $path" -ForegroundColor Cyan

@@ -844,3 +844,110 @@ window.addEventListener('beforeunload', () => {
 });
 
 console.log('✅ All enhanced features initialized successfully!');
+
+// ========== UPLOAD PHOTO FUNCTIONALITY ==========
+const uploadBtn = document.getElementById('uploadBtn');
+const uploadInput = document.getElementById('uploadInput');
+const galleryGrid = document.querySelector('.photo-gallery-grid');
+
+if (uploadBtn && uploadInput && galleryGrid) {
+    uploadBtn.addEventListener('click', () => {
+        uploadInput.click();
+    });
+
+    uploadInput.addEventListener('change', function (e) {
+        if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgSrc = e.target.result;
+
+                // Create new gallery item
+                const newItem = document.createElement('div');
+                newItem.className = 'gallery-item';
+                newItem.innerHTML = `
+                    <img src="${imgSrc}" alt="User Uploaded Photo">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+
+                // Add animation class
+                newItem.style.animation = 'fadeInUp 0.5s ease';
+
+                // Add to grid
+                galleryGrid.appendChild(newItem);
+
+                // Add lightbox functionality to new item
+                newItem.addEventListener('click', function () {
+                    const lightbox = document.createElement('div');
+                    lightbox.style.cssText = `
+                        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                        background: rgba(0, 0, 0, 0.95); display: flex;
+                        align-items: center; justify-content: center; z-index: 10000;
+                        cursor: pointer; animation: fadeIn 0.3s ease;
+                    `;
+
+                    const lightboxImg = document.createElement('img');
+                    lightboxImg.src = imgSrc;
+                    lightboxImg.style.cssText = `
+                        max-width: 90%; max-height: 90%; border-radius: 12px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); animation: zoomIn 0.4s ease;
+                    `;
+
+                    lightbox.appendChild(lightboxImg);
+                    document.body.appendChild(lightbox);
+
+                    lightbox.addEventListener('click', () => {
+                        lightbox.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => document.body.removeChild(lightbox), 300);
+                    });
+                });
+
+                // Scroll to new item
+                newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Show success feedback
+                const originalText = uploadBtn.innerHTML;
+                uploadBtn.innerHTML = '<i class="fas fa-check"></i> Terupload!';
+                setTimeout(() => {
+                    uploadBtn.innerHTML = originalText;
+                }, 2000);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// ========== GUIDE MODAL FUNCTIONALITY ==========
+const downloadGuideBtn = document.getElementById('downloadGuideBtn');
+const guideModal = document.getElementById('guideModal');
+const closeModal = document.querySelector('.close-modal');
+
+if (downloadGuideBtn && guideModal) {
+    downloadGuideBtn.addEventListener('click', () => {
+        guideModal.style.display = 'flex';
+        setTimeout(() => {
+            guideModal.classList.add('show');
+        }, 10);
+    });
+
+    const hideModal = () => {
+        guideModal.classList.remove('show');
+        setTimeout(() => {
+            guideModal.style.display = 'none';
+        }, 300);
+    };
+
+    if (closeModal) {
+        closeModal.addEventListener('click', hideModal);
+    }
+
+    guideModal.addEventListener('click', (e) => {
+        if (e.target === guideModal) {
+            hideModal();
+        }
+    });
+}
