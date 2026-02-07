@@ -48,6 +48,7 @@
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="additional-styles.css">
+<link rel="stylesheet" href="floating-bg.css"> <!-- New Animation Styles -->
 </head>
 
 <body>
@@ -56,12 +57,34 @@
         <i class="fas fa-moon"></i>
     </button>
 
+    <!-- Floating Background Animation -->
+    <!-- Floating Background Animation -->
+    <div class="floating-bg" id="floatingBg">
+        <ul class="floating-shapes">
+            <!-- Left Side Shapes (Reduced) -->
+            <li class="floating-shape" style="left: 2%; animation-duration: 25s; animation-delay: 0s;"><i
+                    class="fas fa-leaf"></i></li>
+            <li class="floating-shape" style="left: 8%; animation-duration: 20s; animation-delay: 5s;"><i
+                    class="fas fa-tree"></i></li>
+            <li class="floating-shape" style="left: 5%; animation-duration: 32s; animation-delay: 12s;"><i
+                    class="fas fa-tint"></i></li>
+
+            <!-- Right Side Shapes (Reduced) -->
+            <li class="floating-shape" style="left: 95%; animation-duration: 40s; animation-delay: 2s;"><i
+                    class="fas fa-globe-americas"></i></li>
+            <li class="floating-shape" style="left: 88%; animation-duration: 35s; animation-delay: 8s;"><i
+                    class="fas fa-recycle"></i></li>
+            <li class="floating-shape" style="left: 92%; animation-duration: 24s; animation-delay: 15s;"><i
+                    class="fas fa-sun"></i></li>
+        </ul>
+    </div>
+
     <!-- Header & Navigation -->
     <header class="header" id="header">
         <nav class="nav container">
             <div class="nav-logo">
                 <i class="fas fa-leaf"></i>
-                <span>LangkahKecil<strong>BumiSehat</strong></span>
+                <span>Langkah Kecil <strong>Bumi Sehat</strong></span>
             </div>
 
             <div class="nav-menu" id="navMenu">
@@ -118,8 +141,23 @@
             </div>
 
             <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80"
-                    alt="Youth Environmental Action">
+                <div class="video-container">
+                    <video id="heroVideo" autoplay muted loop playsinline>
+                        <source src="pandawara.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-controls">
+                        <button class="video-control-btn" id="muteToggle" aria-label="Mute/Unmute">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                        <button class="video-control-btn" id="resetVideo" aria-label="Reset Video">
+                            <i class="fas fa-redo-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="video-caption">
+                    <i class="fas fa-leaf"></i> Kurangi sampah plastik, selamatkan masa depan!
+                </p>
             </div>
         </div>
 
@@ -243,7 +281,7 @@
     <!-- Solution Section -->
     <section class="solution" id="solusi">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up"><span class="highlight"></span>5 Langkah Sederhana, Dampak Luar
+            <h2 class="section-title" data-aos="fade-up"><span class="highlight"></span>6 Langkah Sederhana, Dampak Luar
                 Biasa</span></h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                 Mulai dari diri sendiri, sekarang juga!
@@ -307,6 +345,18 @@
                     <div class="impact">
                         <i class="fas fa-leaf"></i>
                         <strong>Dampak:</strong> Komunitas lebih bersih & sehat
+                    </div>
+                </div>
+
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Daur Ulang Kreatif</h3>
+                    <p>Ubah sampah plastik menjadi barang berguna atau kerajinan tangan yang bernilai.</p>
+                    <div class="impact">
+                        <i class="fas fa-leaf"></i>
+                        <strong>Dampak:</strong> Mengurangi sampah ke TPA & melatih kreativitas
                     </div>
                 </div>
             </div>
@@ -418,6 +468,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- 30-Day Challenge Section -->
     <section class="challenge" id="challenge">
@@ -538,7 +589,7 @@
                     <div class="impact-stories">
                         <div class="story-card" data-aos="fade-up" data-aos-delay="100">
                             <div class="story-image">
-                                <img src="bersih-bersih.jpeg" alt="Beach Cleanup">
+                                <img src="bersih-bersih.jpeg" alt="Siswa Kerja Bakti Sekolah">
                                 <div class="story-badge">
                                     <i class="fas fa-award"></i> Blitar
                                 </div>
@@ -556,40 +607,41 @@
 
                         <div class="story-card" data-aos="fade-up" data-aos-delay="200">
                             <div class="story-image">
-                                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80"
-                                    alt="Zero Waste Shopping">
+                                <img src="sungai.jpeg" alt="Aksi Bersih Sungai">
                                 <div class="story-badge">
-                                    <i class="fas fa-award"></i> Bandung
+                                    <i class="fas fa-award"></i> Blitar
                                 </div>
                             </div>
                             <div class="story-content">
-                                <h3>"30 hari tanpa plastik? DONE!"</h3>
-                                <p><strong>Rina, 22 tahun</strong> berhasil menyelesaikan challenge 30 hari. Sekarang
-                                    dia
-                                    menginspirasi 50+ orang di kampusnya untuk juga zero waste!</p>
+                                <h3>Aksi Bersih Sungai untuk Lingkungan yang Lebih Sehat</h3>
+                                <p>Sekelompok siswa dengan semangat gotong royong membersihkan sungai dari sampah
+                                    sebagai bentuk kepedulian terhadap lingkungan. Aksi ini menunjukkan peran generasi
+                                    muda dalam menjaga kebersihan sungai demi lingkungan yang sehat dan masa depan yang
+                                    lebih baik.</p>
                                 <div class="story-meta">
-                                    <span><i class="fas fa-shopping-bag"></i> 0 Plastik</span>
-                                    <span><i class="fas fa-heart"></i> 50+ Terinspirasi</span>
+                                    <span><i class="fas fa-trash-alt"></i> Bersih Sampah</span>
+                                    <span><i class="fas fa-users"></i> Aksi Bersama</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="story-card" data-aos="fade-up" data-aos-delay="300">
                             <div class="story-image">
-                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80"
-                                    alt="Community Education">
+                                <img src="reboisasi.jpeg" alt="Aksi Nyata Rehabilitasi Hutan">
                                 <div class="story-badge">
-                                    <i class="fas fa-award"></i> Surabaya
+                                    <i class="fas fa-award"></i> Indonesia
                                 </div>
                             </div>
+
                             <div class="story-content">
-                                <h3>"Dari siswa jadi eco-preneur!"</h3>
-                                <p><strong>Budi & Komunitas EcoSby</strong> membuat produk totebag dari bahan daur
-                                    ulang. Kini
-                                    sudah menjual 500+ tas dan mengedukasi ribuan orang!</p>
+                                <h3>Aksi Nyata Generasi Muda dalam Rehabilitasi Hutan</h3>
+                                <p>Pemuda menanam pohon sebagai wujud kepedulian terhadap lingkungan dan tanggung jawab
+                                    menjaga alam. Melalui kegiatan ini, generasi muda berkontribusi langsung dalam upaya
+                                    pelestarian hutan, mengurangi dampak kerusakan lingkungan, serta menciptakan masa
+                                    depan bumi yang lebih hijau dan berkelanjutan. 🌱</p>
                                 <div class="story-meta">
-                                    <span><i class="fas fa-shopping-bag"></i> 500+ Produk</span>
-                                    <span><i class="fas fa-leaf"></i> 100% Recycle</span>
+                                    <span><i class="fas fa-seedling"></i> Reboisasi Mandiri</span>
+                                    <span><i class="fas fa-tree"></i> Bumi Hijau</span>
                                 </div>
                             </div>
                         </div>
@@ -598,58 +650,48 @@
                     <!-- Photo Gallery Grid -->
                     <div class="photo-gallery-grid" data-aos="fade-up" data-aos-delay="400">
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1622866407355-5eb2bd5f3e43?w=400&q=80"
-                                alt="Gallery 1">
+                            <img src="bersih-bersih.jpeg" alt="Aksi Kebersihan Lokal">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=400&q=80"
-                                alt="Gallery 2">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&q=80"
+                                alt="Zero Waste Shopping">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&q=80"
-                                alt="Gallery 3">
+                            <img src="sungai.jpeg" alt="Pembersihan Sungai Lokal">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=400&q=80"
-                                alt="Gallery 4">
+                            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&q=80"
+                                alt="Relawan Lingkungan">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=80"
-                                alt="Gallery 5">
+                            <img src="reboisasi.jpeg" alt="Penanaman Pohon Lokal">
                             <div class="gallery-overlay">
                                 <i class="fas fa-search-plus"></i>
                             </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=400&q=80"
-                                alt="Gallery 6">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="gallery-cta" data-aos="fade-up" data-aos-delay="500">
-                        <p class="upload-invitation">Punya foto aksi anti-plastikmu? Upload dan inspire yang lain! 📸
-                        </p>
-                        <button class="btn btn-outline" id="uploadBtn">
-                            <i class="fas fa-upload"></i> Upload Foto Aksimu
-                        </button>
-                        <input type="file" id="uploadInput" accept="image/*" style="display: none;">
+                        <div class="gallery-cta" data-aos="fade-up" data-aos-delay="500">
+                            <p class="upload-invitation">Punya foto aksi anti-plastikmu? Upload dan inspire yang lain!
+                                📸
+                            </p>
+                            <button class="btn btn-outline" id="uploadBtn">
+                                <i class="fas fa-upload"></i> Upload Foto Aksimu
+                            </button>
+                            <input type="file" id="uploadInput" accept="image/*" style="display: none;">
+                        </div>
                     </div>
-                </div>
             </section>
 
             <!-- Join/Bergabung Section -->
@@ -792,7 +834,7 @@
                         <div class="footer-brand">
                             <div class="footer-logo">
                                 <i class="fas fa-leaf"></i>
-                                <span>LangkahKecil<strong>BumiSehat</strong></span>
+                                <span>Langkah Kecil <strong>Bumi Sehat</strong></span>
                             </div>
                             <p class="footer-tagline">
                                 Langkah Kecil Generasi Muda Hari Ini<br>untuk Bumi yang Lebih Sehat di Masa Depan
@@ -861,7 +903,7 @@
                     </div>
 
                     <div class="footer-bottom">
-                        <p>&copy; 2026 <strong>Langkah Kecil Bumi Sehat</strong>. Dibuat dengan 💚 untuk Bumi kita.</p>
+                        <p>&copy; 2026 <strong>Langkah Kecil Bumi Sehat</strong></p>
                         <div class="footer-bottom-links">
                             <a href="#">Privacy Policy</a>
                             <span>•</span>

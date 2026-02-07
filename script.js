@@ -5,6 +5,20 @@
 
 console.log('🌱 Website Kampanye Lingkungan - Loaded');
 
+// Register Service Worker if available
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // UNREGISTER SERVICE WORKER FOR DEVELOPMENT
+        // This clears the cache issues
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+                registration.unregister();
+                console.log('🧹 Service Worker Unregistered to clear cache');
+            }
+        });
+    });
+}
+
 // ========== INITIALIZATION ==========
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize AOS (Animate On Scroll)
@@ -21,7 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
     initStatCounter();
     initCalculator();
     initSliders();
+    initSliders();
     initScrollEffects();
+    initSliders();
+    initScrollEffects();
+    initFloatingBg();
+    initVideoControls(); // Initialize video controls
 
     console.log('✅ All features initialized');
 });
@@ -422,13 +441,13 @@ function initScrollEffects() {
         });
     }
 
-    // Parallax effect for hero
+    // Parallax effect for hero video
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
-        const heroImage = document.querySelector('.hero-image img');
+        const heroVideoContainer = document.querySelector('.video-container');
 
-        if (heroImage && scrolled < 800) {
-            heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+        if (heroVideoContainer && scrolled < 800) {
+            heroVideoContainer.style.transform = `translateY(${scrolled * 0.3}px)`;
         }
     });
 }
@@ -950,4 +969,77 @@ if (downloadGuideBtn && guideModal) {
             hideModal();
         }
     });
+}
+// ========== FLOATING BACKGROUND CONTROL ==========
+// ========== FLOATING BACKGROUND CONTROL ==========
+function initFloatingBg() {
+    const floatingBg = document.getElementById('floatingBg');
+    const footer = document.querySelector('footer');
+    const joinSection = document.getElementById('bergabung');
+    const homeSection = document.getElementById('home'); // First section
+
+    if (!floatingBg) return;
+
+    // Use Intersection Observer to hide bg when specific sections are visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // If any prohibited section enters the viewport, hide BG
+                floatingBg.classList.add('hidden');
+            } else {
+                // If a prohibited section leaves, we only show BG if NO OTHER prohibited section is visible.
+                // However, the 'entries' array only lists changes. We can't check the state of other observed elements easily here without tracking state.
+                // A simpler, robust heuristic for this specific site structure (Home -> Content -> Join/Footer):
+                // If we leave Home (going down), show. 
+                // If we leave Join/Footer (going up), show.
+                // We will simply remove 'hidden' here. The 'add hidden' from another intersection event will cleanly override this if overlapping occurs slightly.
+                floatingBg.classList.remove('hidden');
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.1 // Trigger when 10% of the target is visible
+    });
+
+    if (homeSection) observer.observe(homeSection);
+    if (joinSection) observer.observe(joinSection);
+    if (footer) observer.observe(footer);
+}
+
+// ========== VIDEO CONTROLS ==========
+function initVideoControls() {
+    const heroVideo = document.getElementById('heroVideo');
+    const muteToggle = document.getElementById('muteToggle');
+    const resetVideo = document.getElementById('resetVideo');
+
+    if (!heroVideo || !muteToggle || !resetVideo) return;
+
+    // Mute/Unmute Toggle
+    muteToggle.addEventListener('click', function () {
+        if (heroVideo.muted) {
+            heroVideo.muted = false;
+            this.querySelector('i').classList.remove('fa-volume-mute');
+            this.querySelector('i').classList.add('fa-volume-up');
+            this.setAttribute('aria-label', 'Mute');
+        } else {
+            heroVideo.muted = true;
+            this.querySelector('i').classList.remove('fa-volume-up');
+            this.querySelector('i').classList.add('fa-volume-mute');
+            this.setAttribute('aria-label', 'Unmute');
+        }
+    });
+
+    // Reset Video
+    resetVideo.addEventListener('click', function () {
+        heroVideo.currentTime = 0;
+        heroVideo.play();
+
+        // Add visual feedback
+        this.style.transform = 'rotate(360deg) scale(1.15)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 400);
+    });
+
+    console.log('✅ Video controls initialized');
 }

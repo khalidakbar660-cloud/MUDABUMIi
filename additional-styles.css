@@ -76,9 +76,10 @@
 
 .challenge-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-xl);
-    margin-top: var(--spacing-xl);
+    margin: var(--spacing-xl) auto 0;
+    max-width: 900px;
 }
 
 .challenge-week {
@@ -859,9 +860,7 @@
         padding: var(--spacing-lg);
     }
 
-    .challenge-grid {
-        grid-template-columns: 1fr;
-    }
+
 
     .impact-stories {
         grid-template-columns: 1fr;
