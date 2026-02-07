@@ -836,6 +836,19 @@
 /* === MOBILE RESPONSIVE FOR NEW SECTIONS === */
 
 @media (max-width: 1024px) {
+    .challenge-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .challenge-week {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .week-header h3 {
+        font-size: var(--fs-lg);
+    }
+
     .join-content {
         grid-template-columns: 1fr;
     }
@@ -860,7 +873,28 @@
         padding: var(--spacing-lg);
     }
 
+    .challenge-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        max-width: 600px;
+    }
 
+    .challenge-week {
+        padding: var(--spacing-lg);
+    }
+
+    .week-header h3 {
+        font-size: var(--fs-lg);
+    }
+
+    .challenge-tasks li {
+        font-size: var(--fs-sm);
+    }
+
+    .week-reward {
+        font-size: var(--fs-xs);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
 
     .impact-stories {
         grid-template-columns: 1fr;
@@ -904,6 +938,14 @@
         font-size: var(--fs-sm);
     }
 
+    .challenge-grid {
+        gap: var(--spacing-md);
+    }
+
+    .challenge-week {
+        padding: var(--spacing-md);
+    }
+
     .week-badge {
         width: 50px;
         height: 50px;
@@ -911,6 +953,36 @@
 
     .week-badge i {
         font-size: 1.5rem;
+    }
+
+    .week-header {
+        gap: var(--spacing-sm);
+    }
+
+    .week-header h3 {
+        font-size: var(--fs-base);
+    }
+
+    .challenge-tasks {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .challenge-tasks li {
+        padding: var(--spacing-xs) 0;
+        font-size: var(--fs-sm);
+    }
+
+    .challenge-tasks i {
+        font-size: 1rem;
+    }
+
+    .week-reward {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.75rem;
+    }
+
+    .week-reward i {
+        font-size: 1.25rem;
     }
 
     .photo-gallery-grid {

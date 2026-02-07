@@ -441,15 +441,15 @@ function initScrollEffects() {
         });
     }
 
-    // Parallax effect for hero video
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const heroVideoContainer = document.querySelector('.video-container');
+    // Parallax effect for hero video - DISABLED for static video
+    // window.addEventListener('scroll', () => {
+    //     const scrolled = window.scrollY;
+    //     const heroVideoContainer = document.querySelector('.video-container');
 
-        if (heroVideoContainer && scrolled < 800) {
-            heroVideoContainer.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-    });
+    //     if (heroVideoContainer && scrolled < 800) {
+    //         heroVideoContainer.style.transform = `translateY(${scrolled * 0.3}px)`;
+    //     }
+    // });
 }
 
 // ========== SOLUTION CARDS TOUCH SUPPORT ==========

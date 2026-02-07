@@ -498,7 +498,7 @@ img {
 }
 
 .hero-text {
-    animation: fadeInUp 1s ease;
+    /* animation: fadeInUp 1s ease; - DISABLED */
 }
 
 @keyframes fadeInUp {
@@ -556,7 +556,7 @@ img {
 
 .hero-image {
     position: relative;
-    animation: fadeInRight 1s ease 0.3s backwards;
+    /* animation: fadeInRight 1s ease 0.3s backwards; - DISABLED for static video */
 }
 
 @keyframes fadeInRight {
@@ -577,7 +577,6 @@ img {
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--shadow-2xl);
-    animation: float 6s ease-in-out infinite;
 }
 
 .video-container video {
@@ -641,13 +640,13 @@ img {
     border-radius: var(--radius-lg);
     border-left: 4px solid var(--primary);
     box-shadow: var(--shadow-sm);
-    animation: fadeInUp 1s ease 0.6s backwards;
+    /* animation: fadeInUp 1s ease 0.6s backwards; - DISABLED */
 }
 
 .video-caption i {
     color: var(--primary);
     margin-right: 0.5rem;
-    animation: leafBounce 2s infinite;
+    /* animation: leafBounce 2s infinite; - DISABLED */
 }
 
 @keyframes float {
@@ -669,7 +668,7 @@ img {
     transform: translateX(-50%);
     font-size: 2rem;
     color: var(--primary);
-    animation: bounce 2s infinite;
+    /* animation: bounce 2s infinite; - DISABLED */
     cursor: pointer;
 }
 
