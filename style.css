@@ -975,6 +975,164 @@ img {
     color: var(--success);
 }
 
+/* === Custom Card Backgrounds === */
+.solution-card-bg-tas {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: var(--white);
+}
+
+.solution-card-bg-tas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('tas belanja.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    /* Transparent image for readability */
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-tas:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.solution-card-bg-botol::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('botol.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-botol:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.solution-card-bg-sedotan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('sedotan.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-sedotan:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.solution-card-bg-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('botol minuman sendiri.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-minimal:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.solution-card-bg-bersih::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("bersih'.jpeg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-bersih:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.solution-card-bg-daurulang::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('daur ulang.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all var(--transition-base);
+}
+
+.solution-card-bg-daurulang:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+/* Ensure content stays on top and is clear */
+.solution-card-bg-tas .card-icon,
+.solution-card-bg-tas h3,
+.solution-card-bg-tas p,
+.solution-card-bg-tas .impact,
+.solution-card-bg-botol .card-icon,
+.solution-card-bg-botol h3,
+.solution-card-bg-botol p,
+.solution-card-bg-botol .impact,
+.solution-card-bg-sedotan .card-icon,
+.solution-card-bg-sedotan h3,
+.solution-card-bg-sedotan p,
+.solution-card-bg-sedotan .impact,
+.solution-card-bg-minimal .card-icon,
+.solution-card-bg-minimal h3,
+.solution-card-bg-minimal p,
+.solution-card-bg-minimal .impact,
+.solution-card-bg-bersih .card-icon,
+.solution-card-bg-bersih h3,
+.solution-card-bg-bersih p,
+.solution-card-bg-bersih .impact,
+.solution-card-bg-daurulang .card-icon,
+.solution-card-bg-daurulang h3,
+.solution-card-bg-daurulang p,
+.solution-card-bg-daurulang .impact {
+    position: relative;
+    z-index: 2;
+}
+
 .alternatives-cta {
     text-align: center;
     margin-top: var(--spacing-2xl);
@@ -1260,14 +1418,39 @@ img {
 /* Tablet */
 @media (max-width: 1024px) {
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .hero-text {
+        display: contents;
+    }
+
+    .hero-title {
+        order: 1;
+        text-align: center;
     }
 
     .hero-image {
-        order: -1;
+        order: 2;
         max-width: 500px;
         margin: 0 auto;
+    }
+
+    .hero-subtitle {
+        order: 3;
+        text-align: center;
+    }
+
+    .hero-description {
+        order: 4;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        order: 5;
+        justify-content: center;
     }
 
     .timeline::before {
